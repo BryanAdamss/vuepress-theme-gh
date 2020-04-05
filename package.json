@@ -1,0 +1,41 @@
+{
+  "name": "@bryanadamss/vuepress-theme-gh",
+  "version": "1.0.0",
+  "description": "A blog theme for vuepress",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryanAdamss/vuepress-theme-gh.git"
+  },
+  "keywords": [
+    "vue",
+    "vuepress",
+    "theme",
+    "blog"
+  ],
+  "author": "GuangHui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BryanAdamss/vuepress-theme-gh/issues"
+  },
+  "homepage": "https://github.com/BryanAdamss/vuepress-theme-gh#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
