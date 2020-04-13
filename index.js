@@ -1,8 +1,8 @@
-const removeMd = require('remove-markdown')
-
 const path = require('path')
+const removeMd = require('remove-markdown')
+const readingTime = require('./plugins/reading-time')
 
-module.exports = (themeConfig, ctx) => {
+module.exports = (themeConfig = {}, ctx) => {
   // 默认标题
   const DEFAULT_NAVS = [
     {
@@ -19,7 +19,7 @@ module.exports = (themeConfig, ctx) => {
     },
   ]
 
-  themeConfig = Object.assign(themeConfig, {
+  const mergedThemeConfig = Object.assign({}, themeConfig, {
     nav: themeConfig.nav || DEFAULT_NAVS,
     summary:
       typeof themeConfig.summary === 'boolean' ? themeConfig.summary : true,
@@ -28,8 +28,6 @@ module.exports = (themeConfig, ctx) => {
         ? themeConfig.summaryLength
         : 200,
     pwa: typeof themeConfig.pwa === 'boolean' ? themeConfig.pwa : true,
-    heroImage:
-      themeConfig.heroImage || 'https://source.unsplash.com/random/800x600',
   })
 
   const defaultBlogPluginOptions = {
@@ -64,7 +62,7 @@ module.exports = (themeConfig, ctx) => {
     ],
   }
 
-  const { modifyBlogPluginOptions } = themeConfig
+  const { modifyBlogPluginOptions } = mergedThemeConfig
 
   const blogPluginOptions =
     typeof modifyBlogPluginOptions === 'function'
@@ -72,51 +70,50 @@ module.exports = (themeConfig, ctx) => {
       : defaultBlogPluginOptions
 
   const plugins = [
-    'disqus',
-    // TODO:研究下seo报错原因
-    // 'seo',
-    'reading-time',
-    'smooth-scroll',
-    'reading-progress',
-    '@vuepress/medium-zoom',
-    '@vuepress/nprogress',
-    ['@vuepress/blog', blogPluginOptions],
+    'vuepress-plugin-disqus',
+    'vuepress-plugin-seo',
+    readingTime,
+    'vuepress-plugin-smooth-scroll',
+    'vuepress-plugin-reading-progress',
+    '@vuepress/plugin-medium-zoom',
+    '@vuepress/plugin-nprogress',
+    ['@vuepress/plugin-blog', blogPluginOptions],
     [
-      '@vuepress/search',
+      '@vuepress/plugin-search',
       {
         searchMaxSuggestions: 10,
       },
     ],
   ]
 
-  if (themeConfig.socialShare && themeConfig.socialShareNetworks) {
+  if (mergedThemeConfig.socialShare && mergedThemeConfig.socialShareNetworks) {
     plugins.push([
-      'social-share',
-      { networks: themeConfig.socialShareNetworks },
+      'vuepress-plugin-social-share',
+      { networks: mergedThemeConfig.socialShareNetworks },
     ])
   }
 
-  if (themeConfig.sitemap && themeConfig.hostname) {
+  if (mergedThemeConfig.sitemap && mergedThemeConfig.hostname) {
     plugins.push([
-      'sitemap',
+      'vuepress-plugin-sitemap',
       {
-        hostname: themeConfig.hostname,
+        hostname: mergedThemeConfig.hostname,
       },
     ])
   }
 
-  if (themeConfig.googleAnalytics) {
+  if (mergedThemeConfig.googleAnalytics) {
     plugins.push([
-      '@vuepress/google-analytics',
+      '@vuepress/plugin-google-analytics',
       {
-        ga: themeConfig.googleAnalytics,
+        ga: mergedThemeConfig.googleAnalytics,
       },
     ])
   }
 
-  if (themeConfig.pwa) {
+  if (mergedThemeConfig.pwa) {
     plugins.push([
-      '@vuepress/pwa',
+      '@vuepress/plugin-pwa',
       {
         serviceWorker: true,
         updatePopup: true,
@@ -127,8 +124,8 @@ module.exports = (themeConfig, ctx) => {
   const config = {
     plugins,
     define: {
-      THEME_BLOG_PAGINATION_COMPONENT: themeConfig.paginationComponent
-        ? themeConfig.paginationComponent
+      THEME_BLOG_PAGINATION_COMPONENT: mergedThemeConfig.paginationComponent
+        ? mergedThemeConfig.paginationComponent
         : 'Pagination',
     },
     globalLayout: path.resolve(__dirname, './layouts/GlobalLayoutCustom.vue'),
@@ -136,21 +133,26 @@ module.exports = (themeConfig, ctx) => {
 
   /**
    * Generate summary.
+   * 生成摘要
    */
-  config.extendPageData = function (pageCtx) {
-    const strippedContent = pageCtx._strippedContent
+  config.extendPageData = function ($page) {
+    const strippedContent = $page._strippedContent
     if (!strippedContent) {
       return
     }
 
     const sanitizedContent = strippedContent.trim().replace(/^#+\s+(.*)/, '')
 
-    if (themeConfig.summary) {
-      pageCtx.summary =
-        removeMd(sanitizedContent.slice(0, themeConfig.summaryLength)) + ' ...'
+    if (mergedThemeConfig.summary) {
+      $page.summary =
+        removeMd(sanitizedContent.slice(0, mergedThemeConfig.summaryLength)) +
+        ' ...'
     }
 
-    pageCtx.content = removeMd(sanitizedContent)
+    $page.content = removeMd(sanitizedContent)
+
+    // 挂载最终合并的主题配置
+    $page.$mergedThemeConfig = mergedThemeConfig
   }
 
   return config

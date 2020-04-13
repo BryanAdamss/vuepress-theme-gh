@@ -1,6 +1,11 @@
 <template>
   <div class="c-PaginationCustom">
-    <Pagination />
+    <!-- <Pagination /> -->
+
+    <component
+      :is="paginationComponent"
+      v-if=" paginationComponent"
+    />
   </div>
 </template>
 
@@ -10,6 +15,7 @@
  * * 自定义分页器
  */
 
+import Vue from 'vue'
 import { Pagination } from '@vuepress/plugin-blog/lib/client/components'
 
 export default {
@@ -20,18 +26,32 @@ export default {
   mixins: [],
   props: {},
   data() {
-    return {}
+    return {
+      paginationComponent: null
+    }
   },
   computed: {},
   watch: {},
   beforeCreate() {},
-  created() {},
+  created() {
+    this.paginationComponent = this.getPaginationComponent()
+  },
   mounted() {},
-  methods: {}
+  methods: {
+    getPaginationComponent() {
+      const n = THEME_BLOG_PAGINATION_COMPONENT
+      if (n === 'Pagination') {
+        return Pagination
+      }
+
+      return Vue.component(n) || Pagination
+    }
+
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-PaginationCustom {
 }
 </style>

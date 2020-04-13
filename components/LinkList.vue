@@ -39,11 +39,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="stylus">
 .c-LinkList {
   &-item {
     color: #333;
     cursor: pointer;
+
     &.router-link-active {
       color: red;
     }

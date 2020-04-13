@@ -52,7 +52,7 @@ export default {
         return {
           ...page,
           _dateText: new Date(page.frontmatter.date).toLocaleDateString(),
-          _readTimeText: `大约${Math.round(page.readingTime.minutes)}分钟`
+          _readTimeText: `大约${page.readingTime}分钟`
         }
       })
     }
@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-PostCardList {
 }
 </style>

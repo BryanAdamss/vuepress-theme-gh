@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     showPagination() {
-      return !!this.$pagination && !!this.$pagination.pages && !!this.$pagination.pages.length
+      return !!this.$pagination && !!this.$pagination.length
     }
   },
   watch: {},
@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-BasePaginationPage {
 }
 </style>

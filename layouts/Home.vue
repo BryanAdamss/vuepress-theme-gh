@@ -6,10 +6,9 @@
         class="u-textC"
       />
 
-      {{ $themeConfig }}
       <div class="c-MasterNav">
         <div
-          v-for="nav in $themeConfig.nav"
+          v-for="nav in $page.$mergedThemeConfig.nav"
           :key="nav.link"
           class="c-MasterNav-item"
         >
@@ -49,7 +48,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-Home {
   &-bd {
   }

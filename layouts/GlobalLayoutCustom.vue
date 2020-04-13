@@ -1,5 +1,12 @@
 <template>
   <div class="c-GlobalLayoutCustom">
+    $site:{{ $site }}
+    <hr>
+    $page:{{ $page }}
+    <hr>
+    $themeConfig:{{ $themeConfig }}
+    <hr>
+
     <div
       v-if="showHeader"
       class="c-GlobalLayoutCustom-hd"
@@ -80,7 +87,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-GlobalLayoutCustom {
 }
 </style>

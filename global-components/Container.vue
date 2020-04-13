@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-Container {
   max-width: 740px;
   margin: 0 auto;

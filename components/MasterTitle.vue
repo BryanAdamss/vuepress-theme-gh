@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .c-MasterTitle {
   font-size: 24px;
   color: #232323;
