@@ -7,7 +7,7 @@
           tag="h1"
           class="c-Logo-text"
         >
-          GuangHui
+          xxxxxxxxxx
         </RouterLink>
       </div>
     </div>

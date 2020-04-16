@@ -12,8 +12,11 @@
           @click.native="$emit('cardClick',page.path)"
         >
           <template #ft>
-            <span>{{ page._dateText }}</span>
-            <span>{{ page._readTimeText }}</span>
+            <div class="c-Info">
+              <span class="c-Info-text">{{ page._dateText }}</span>
+              <span class="c-Info-text">{{ page._charCountText }}</span>
+              <span class="c-Info-text">{{ page._readTimeText }}</span>
+            </div>
           </template>
         </PostCard>
       </slot>
@@ -52,7 +55,8 @@ export default {
         return {
           ...page,
           _dateText: new Date(page.frontmatter.date).toLocaleDateString(),
-          _readTimeText: `大约${page.readingTime}分钟`
+          _readTimeText: `大约${Math.max(1, Math.round(page.readingTime / 1000 / 60))}分钟`,
+          _charCountText: `约${page.charCount}字`
         }
       })
     }
@@ -67,5 +71,10 @@ export default {
 
 <style lang="stylus" scoped>
 .c-PostCardList {
+}
+
+.c-Info {
+  font-size: 14px;
+  color: $subTextColor;
 }
 </style>

@@ -53,5 +53,32 @@ export default {
 
 <style lang="stylus" scoped>
 .c-PaginationCustom {
+  text-align: center;
+
+  /deep/ .pagination {
+    a {
+      border: none;
+      background: none;
+      color: $subTextColor;
+    }
+
+    .page-item.active {
+      a {
+        color: $accentColor;
+      }
+    }
+
+    .disabled {
+      a {
+        display: none;
+      }
+    }
+
+    .page-item.disabled {
+      a {
+        display: block;
+      }
+    }
+  }
 }
 </style>

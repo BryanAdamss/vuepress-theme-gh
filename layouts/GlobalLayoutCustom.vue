@@ -18,7 +18,7 @@
 
     <div
       class="c-GlobalLayoutCustom-bd"
-      :style="{'margin-top':showHeader ? '80px':''}"
+      :style="{'margin-top':showHeader ? '80px':'','min-height':showFooter ? 'calc(100vh - 80px - 26px)':''}"
     >
       <component :is="layout" />
     </div>

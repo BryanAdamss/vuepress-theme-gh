@@ -1,10 +1,14 @@
 <template>
   <div class="c-PostCard">
     <div class="c-PostCard-hd">
-      <h2>{{ title }}</h2>
+      <h2 class="c-PostCard-title">
+        {{ title }}
+      </h2>
     </div>
     <div class="c-PostCard-bd">
-      <p>{{ summary }}</p>
+      <p class="c-PostCard-summary">
+        {{ summary }}
+      </p>
     </div>
     <div class="c-PostCard-ft">
       <slot name="ft" />
@@ -54,5 +58,12 @@ export default {
 
 <style lang="stylus" scoped>
 .c-PostCard {
+  &-title {
+    font-size: 20px;
+  }
+
+  &-summary {
+    font-size: 16px;
+  }
 }
 </style>

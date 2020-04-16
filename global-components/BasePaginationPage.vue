@@ -19,6 +19,8 @@
 
 import PaginationCustom from '@theme/components/PaginationCustom'
 
+const CONST = require('@theme/config/const')
+
 export default {
   name: 'BasePaginationPage',
   components: {
@@ -31,7 +33,8 @@ export default {
   },
   computed: {
     showPagination() {
-      return !!this.$pagination && !!this.$pagination.length
+      // 分页数量大于1时,才需要展示分页
+      return !!this.$pagination && this.$pagination.length > 1
     }
   },
   watch: {},

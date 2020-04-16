@@ -2,6 +2,8 @@ const path = require('path')
 const removeMd = require('remove-markdown')
 const readingTime = require('./plugins/reading-time')
 
+const CONST = require('./config/const')
+
 module.exports = (themeConfig = {}, ctx) => {
   // 默认标题
   const DEFAULT_NAVS = [
@@ -41,9 +43,6 @@ module.exports = (themeConfig = {}, ctx) => {
         itemLayout: 'PostPage',
         frontmatter: { title: '文章' },
         itemPermalink: 'posts/:year/:month/:day/:slug',
-        pagination: {
-          layout: 'PostPageList',
-        },
       },
     ],
     frontmatters: [
@@ -55,11 +54,14 @@ module.exports = (themeConfig = {}, ctx) => {
         layout: 'Tags',
         scopeLayout: 'PostPageList',
         frontmatter: { title: 'Tag' },
-        pagination: {
-          layout: 'PostPageList',
-        },
       },
     ],
+    globalPagination: {
+      layout: 'PostPageList',
+      prevText: '←',
+      nextText: '→',
+      lengthPerPage: CONST.PAGE_SIZE,
+    },
   }
 
   const { modifyBlogPluginOptions } = mergedThemeConfig
@@ -81,7 +83,7 @@ module.exports = (themeConfig = {}, ctx) => {
     [
       '@vuepress/plugin-search',
       {
-        searchMaxSuggestions: 10,
+        searchMaxSuggestions: 2,
       },
     ],
   ]

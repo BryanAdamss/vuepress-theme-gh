@@ -12,6 +12,7 @@ module.exports = (options, ctx) => {
 
       if (_strippedContent) {
         $page.readingTime = readingTime(_strippedContent).time
+        $page.charCount = _strippedContent.length
       }
     },
   }
