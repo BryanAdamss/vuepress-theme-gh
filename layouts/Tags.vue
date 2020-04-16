@@ -1,16 +1,18 @@
 <template>
-  <div class="c-Tags">
-    <div class="c-Tags-bd">
-      <template v-for="tag in tagList">
-        <RouterLink
-          :key="tag.name"
-          :to="tag.path"
-        >
-          {{ tag.name }}
-        </RouterLink>
-      </template>
+  <Container>
+    <div class="c-Tags">
+      <div class="c-Tags-bd">
+        <template v-for="tag in tagList">
+          <RouterLink
+            :key="tag.name"
+            :to="tag.path"
+          >
+            {{ tag.name }}
+          </RouterLink>
+        </template>
+      </div>
     </div>
-  </div>
+  </Container>
 </template>
 
 <script>

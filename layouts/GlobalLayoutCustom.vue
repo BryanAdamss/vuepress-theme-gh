@@ -1,30 +1,33 @@
 <template>
   <div class="c-GlobalLayoutCustom">
-    $site:{{ $site }}
+    <!-- $site:{{ $site }}
     <hr>
     $page:{{ $page }}
     <hr>
     $themeConfig:{{ $themeConfig }}
     <hr>
+    $mergedThemeConfig:{{ $page.$mergedThemeConfig }}
+    <hr> -->
 
     <div
       v-if="showHeader"
       class="c-GlobalLayoutCustom-hd"
     >
-      <header>
-        <h1>Header</h1>
-      </header>
+      <TheHeader />
     </div>
-    <div class="c-GlobalLayoutCustom-bd">
+
+    <div
+      class="c-GlobalLayoutCustom-bd"
+      :style="{'margin-top':showHeader ? '80px':''}"
+    >
       <component :is="layout" />
     </div>
+
     <div
       v-if="showFooter"
       class="c-GlobalLayoutCustom-ft"
     >
-      <footer>
-        <h1>Footer</h1>
-      </footer>
+      <TheFooter />
     </div>
   </div>
 </template>
@@ -89,5 +92,6 @@ export default {
 
 <style lang="stylus" scoped>
 .c-GlobalLayoutCustom {
+  width: 100vw;
 }
 </style>

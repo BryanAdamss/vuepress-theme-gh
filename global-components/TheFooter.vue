@@ -1,18 +1,21 @@
 <template>
-  <div class="c-Container">
-    <div class="c-Container-bd">
-      <slot />
+  <footer class="c-TheFooter">
+    <div class="c-TheFooter-bd">
+      <slot>
+        Footer
+      </slot>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>
 /**
- * * Container
+ * * TheFooter
+ * * 头部
  */
 
 export default {
-  name: 'Container',
+  name: 'TheFooter',
   components: {},
   mixins: [],
   props: {},
@@ -29,9 +32,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.c-Container {
-  max-width: 740px;
-  margin: 0 auto;
-  padding: 10px 40px;
+.c-TheFooter {
 }
 </style>

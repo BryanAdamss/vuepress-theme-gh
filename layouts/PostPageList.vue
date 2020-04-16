@@ -1,13 +1,15 @@
 <template>
-  <BasePaginationPage class="c-PostPageList">
-    <template>
-      <PostCardList
-        v-if="pages && pages.length > 0"
-        :pages="pages"
-        @cardClick="handleCardClick"
-      />
-    </template>
-  </BasePaginationPage>
+  <Container>
+    <BasePaginationPage class="c-PostPageList">
+      <template>
+        <PostCardList
+          v-if="pages && pages.length > 0"
+          :pages="pages"
+          @cardClick="handleCardClick"
+        />
+      </template>
+    </BasePaginationPage>
+  </Container>
 </template>
 
 <script>

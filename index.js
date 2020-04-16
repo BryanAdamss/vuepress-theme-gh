@@ -53,10 +53,10 @@ module.exports = (themeConfig = {}, ctx) => {
         path: '/tag/',
         // layout: 'Tag',  defaults to `FrontmatterKey.vue`
         layout: 'Tags',
-        scopeLayout: 'SingleTagList',
+        scopeLayout: 'PostPageList',
         frontmatter: { title: 'Tag' },
         pagination: {
-          layout: 'SingleTagList',
+          layout: 'PostPageList',
         },
       },
     ],
@@ -128,12 +128,15 @@ module.exports = (themeConfig = {}, ctx) => {
         ? mergedThemeConfig.paginationComponent
         : 'Pagination',
     },
+    // 自定义全局layout组件
     globalLayout: path.resolve(__dirname, './layouts/GlobalLayoutCustom.vue'),
+    // 挂载单例组件
+    globalUIComponents: ['BackToTop'],
   }
 
   /**
    * Generate summary.
-   * 生成摘要
+   * 生成摘要、挂在最终主题配置
    */
   config.extendPageData = function ($page) {
     const strippedContent = $page._strippedContent

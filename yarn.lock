@@ -3138,6 +3138,11 @@ vuepress-plugin-mailchimp@^1.4.1:
     jsonp "^0.2.1"
     query-string "^6.9.0"
 
+vuepress-plugin-reading-progress@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-reading-progress/download/vuepress-plugin-reading-progress-1.0.9.tgz#800cef1ed93abe9ab7aae0147d269d1b1359ef32"
+  integrity sha1-gAzvHtk6vpq3quAUfSadGxNZ7zI=
+
 vuepress-plugin-seo@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-seo/download/vuepress-plugin-seo-0.1.2.tgz#132e656274bfaffce72e816fb8450951f3f6cc13"

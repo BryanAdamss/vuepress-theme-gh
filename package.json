@@ -32,6 +32,7 @@
     "reading-time": "^1.2.0",
     "remove-markdown": "^0.3.0",
     "vuepress-plugin-disqus": "^0.2.0",
+    "vuepress-plugin-reading-progress": "^1.0.9",
     "vuepress-plugin-seo": "^0.1.2",
     "vuepress-plugin-sitemap": "^2.3.1",
     "vuepress-plugin-smooth-scroll": "^0.0.9",
@@ -50,7 +51,7 @@
     "eslint-plugin-vue": "^6.2.2"
   },
   "peerDependencies": {
-    "vuepress": "^1.4.0"
+    "vuepress": "^1.4.1"
   },
   "config": {
     "commitizen": {
