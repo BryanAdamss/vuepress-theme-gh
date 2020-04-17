@@ -30,7 +30,7 @@ export default {
 
 <style lang="stylus" scoped>
 .c-Container {
-  max-width: 740px;
+  max-width: 950px;
   margin: 0 auto;
   padding: 10px 40px;
 }

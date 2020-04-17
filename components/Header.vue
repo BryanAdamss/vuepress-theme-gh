@@ -7,7 +7,7 @@
           tag="h1"
           class="c-Logo-text"
         >
-          xxxxxxxxxx
+          VuePress
         </RouterLink>
       </div>
     </div>

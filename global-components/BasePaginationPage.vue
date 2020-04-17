@@ -19,8 +19,6 @@
 
 import PaginationCustom from '@theme/components/PaginationCustom'
 
-const CONST = require('@theme/config/const')
-
 export default {
   name: 'BasePaginationPage',
   components: {

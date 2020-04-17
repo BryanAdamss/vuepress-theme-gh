@@ -9,6 +9,7 @@
         <PostCard
           :title="page.title"
           :summary="page.summary"
+          :fileName="page._fileName"
           @click.native="$emit('cardClick',page.path)"
         >
           <template #ft>
@@ -56,7 +57,8 @@ export default {
           ...page,
           _dateText: new Date(page.frontmatter.date).toLocaleDateString(),
           _readTimeText: `大约${Math.max(1, Math.round(page.readingTime / 1000 / 60))}分钟`,
-          _charCountText: `约${page.charCount}字`
+          _charCountText: `约${page.charCount}字`,
+          _fileName: this.getFileName(page.relativePath)
         }
       })
     }
@@ -65,12 +67,24 @@ export default {
   beforeCreate() {},
   created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    getFileName(path) {
+      const ret = path.match(/\/?([^/]*).md$/)
+      return ret ? ret[1] : ''
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
 .c-PostCardList {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  &-item {
+    margin: 10px;
+  }
 }
 
 .c-Info {
