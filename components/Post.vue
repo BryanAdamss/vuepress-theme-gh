@@ -1,6 +1,6 @@
 <template>
   <div class="c-Post">
-    <Content />
+    <Content class="c-Content" />
   </div>
 </template>
 
@@ -29,5 +29,7 @@ export default {
 
 <style lang="stylus" scoped>
 .c-Post {
+  background-color: #fff;
+  padding: 20px;
 }
 </style>

@@ -1,0 +1,58 @@
+.c-Content{
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  ol, p, ul {
+      line-height: 1.7;
+  }
+
+  ol, ul {
+      padding-left: 1.2em;
+  }
+
+  a.header-anchor{
+    opacity: 0;
+    color:$accentColor;
+    margin-left:-1em;
+  }
+
+  h1:hover a.header-anchor,
+  h2:hover a.header-anchor,
+  h3:hover a.header-anchor,
+  h4:hover a.header-anchor,
+  h5:hover a.header-anchor,
+  h6:hover a.header-anchor{
+    opacity:1;
+  }
+
+  a[target="_blank"]{
+    color:$accentColor;
+    &:hover{
+      text-decoration: underline;  
+    }
+  }
+
+   
+
+  blockquote{
+    color:#999;
+    margin:0;
+    padding:0 30px;
+    position: relative;
+    font-size:14px;
+    word-break: break-all;
+    word-wrap: break-word;
+
+    &::before{
+      content:"";
+      position: absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:4px;
+      background-color:$accentColor;
+    }
+  }
+} 

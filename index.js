@@ -28,7 +28,7 @@ module.exports = (themeConfig = {}, ctx) => {
     summaryLength:
       typeof themeConfig.summaryLength === 'number'
         ? themeConfig.summaryLength
-        : 200,
+        : 100,
     pwa: typeof themeConfig.pwa === 'boolean' ? themeConfig.pwa : true,
   })
 
