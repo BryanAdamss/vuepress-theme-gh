@@ -20,7 +20,11 @@
               :key="nav.text"
               class="c-NavLinks-item"
             >
-              <RouterLink :to="{path:nav.link}">
+              <RouterLink
+                :to="{path:nav.link}"
+                exact
+                class="c-NavLinks-link"
+              >
                 {{ nav.text }}
               </RouterLink>
             </li>
@@ -95,13 +99,20 @@ export default {
 }
 
 .c-NavLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
 
   &-item {
-    &+& {
-      margin-left: 10px;
-    }
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  &-link {
+    color: $textColor;
+    font-size: 14px;
   }
 }
 

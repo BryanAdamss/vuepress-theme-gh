@@ -1,8 +1,5 @@
 <template>
   <div class="c-PostPage">
-    <div class="c-PostPage-side">
-      123123
-    </div>
     <div class="c-PostPage-main">
       <Container>
         <template>
@@ -25,14 +22,15 @@ export default {
   name: 'PostPage',
   components: {
     Post
-
   },
   mixins: [],
   props: {},
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+
+  },
   watch: {},
   beforeCreate() {},
   created() {},

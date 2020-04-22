@@ -30,6 +30,6 @@ export default {
 <style lang="stylus" scoped>
 .c-Post {
   background-color: #fff;
-  padding: 20px;
+  padding: 20px 40px;
 }
 </style>

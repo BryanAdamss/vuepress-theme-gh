@@ -86,6 +86,13 @@ module.exports = (themeConfig = {}, ctx) => {
         searchMaxSuggestions: 2,
       },
     ],
+    [
+      '@vuepress/active-header-links',
+      {
+        sidebarLinkSelector: '.c-SideNav-text',
+        headerAnchorSelector: '.header-anchor',
+      },
+    ],
   ]
 
   if (mergedThemeConfig.socialShare && mergedThemeConfig.socialShareNetworks) {
@@ -133,7 +140,7 @@ module.exports = (themeConfig = {}, ctx) => {
     // 自定义全局layout组件
     globalLayout: path.resolve(__dirname, './layouts/GlobalLayoutCustom.vue'),
     // 挂载单例组件
-    globalUIComponents: ['BackToTop'],
+    globalUIComponents: ['BackToTop', 'SideNav'],
   }
 
   /**
